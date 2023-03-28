@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from .views import increment_counter_value
+from .views import decrement_counter_value
+from .views import get_counter_value
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('counter/', get_counter_value, name='get_counter_value'),
+    path('counter/increment/', increment_counter_value, name='increment_counter_value'),
+    path('counter/decrement/', decrement_counter_value, name='decrement_counter_value'),
 ]
