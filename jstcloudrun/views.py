@@ -5,6 +5,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Counter
 
+def hello_world(request):
+    response_data = {
+        "message": "Welcome to Jst ApoEngine, Hello World!"
+    }
+    return JsonResponse(response_data)
+
 def get_counter_value(request):
     counter = Counter.objects.first()
     response_data = {

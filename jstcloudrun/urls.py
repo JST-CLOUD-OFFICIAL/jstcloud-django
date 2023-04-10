@@ -19,10 +19,11 @@ from django.urls import path
 from .views import increment_counter_value
 from .views import decrement_counter_value
 from .views import get_counter_value
+from .views import hello_world
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('counter/', get_counter_value, name='get_counter_value'),
-    path('counter/increment/', increment_counter_value, name='increment_counter_value'),
-    path('counter/decrement/', decrement_counter_value, name='decrement_counter_value'),
+    path('', hello_world, name="hello_world"),
+    path('counter', get_counter_value, name='get_counter_value'),
+    path('counter/increment', increment_counter_value, name='increment_counter_value'),
+    path('counter/decrement', decrement_counter_value, name='decrement_counter_value'),
 ]

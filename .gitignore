@@ -130,4 +130,9 @@ dmypy.json
 
 .idea
 
+# migrations file
+**/migrations
+
+# test and output file
 *demo.zip
+test.sh

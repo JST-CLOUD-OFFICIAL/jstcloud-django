@@ -74,20 +74,24 @@ WSGI_APPLICATION = 'jstcloudrun.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('db_name'),
-        'USER': os.environ.get('db_user'),
-        'PASSWORD': os.environ.get('db_pass'),
-        'HOST': os.environ.get('db_addr'),
-        'PORT': 3306,
-        'OPTIONS': {
-            'charset': 'utf8mb4'
-        },
+if os.environ.get('db_pass'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('db_name'),
+            'USER': os.environ.get('db_user'),
+            'PASSWORD': os.environ.get('db_pass'),
+            'HOST': os.environ.get('db_addr').split(':')[0],
+            'PORT': os.environ.get('db_addr').split(':')[1],
+            'OPTIONS': {
+                'charset': 'utf8mb4'
+            },
+        }
     }
-}
+else:
+    DATABASES = {
+
+    }
 
 
 # Password validation
